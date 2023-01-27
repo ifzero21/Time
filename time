@@ -1,0 +1,31 @@
+# import the datetime module
+from datetime import datetime
+
+# create a dictionary to store employee information
+employees = {}
+
+# function to clock in an employee
+def clock_in(employee_name):
+    # get the current time
+    current_time = datetime.now()
+    # add the employee and their clock in time to the dictionary
+    employees[employee_name] = {"clock_in": current_time}
+    print(f"{employee_name} has clocked in at {current_time}.")
+
+# function to clock out an employee
+def clock_out(employee_name):
+    # get the current time
+    current_time = datetime.now()
+    # add the clock out time to the employee's dictionary
+    employees[employee_name]["clock_out"] = current_time
+    # calculate the total time worked
+    clock_in_time = employees[employee_name]["clock_in"]
+    total_time = current_time - clock_in_time
+    # add the total time worked to the employee's dictionary
+    employees[employee_name]["total_time"] = total_time
+    print(f"{employee_name} has clocked out at {current_time}.")
+    print(f"{employee_name} has worked for a total of {total_time}.")
+
+# test the functions with some sample data
+clock_in("John Smith")
+clock_out("John Smith")
